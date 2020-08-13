@@ -74,7 +74,7 @@ $(document).ready(() => {
     function handleArticleDelete() {
          
          var articleToDelete = $(this).parents(".panel").data();
-         console.log("Handling deletion")
+         console.log("Deleting article: ")
          console.log(articleToDelete._id);
          $.ajax({
               method: "DELETE",
@@ -88,9 +88,6 @@ $(document).ready(() => {
 
 
     function handleArticleNotes() {
-         console.log();
-         console.log("WHATUPPPP!!!!!")
-         console.log();
          var currentArticle = $(this).parents(".panel").data();
          $.get("/api/notes/" + currentArticle._id).then((data) => {
               var modalText = ["<div class='container-fluid text-center'>",
@@ -164,7 +161,6 @@ $(document).ready(() => {
               });
          };
     };
-
 
     function handleNoteDelete() {
          var noteToDelete = $(this).data("_id");
