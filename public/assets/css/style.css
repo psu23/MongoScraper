@@ -1,3 +1,18 @@
+.navbar {
+  background-color: rgb(34, 34, 34);
+}
+
+.article-name {
+  font-size: 2rem;
+  color: rgb(34, 34, 34);
+  font-weight: bold;
+}
+
+.article-name:hover {
+  color: #0c7cd5;
+  text-decoration: none;
+}
+
 html {
     position: relative;
     min-height: 100%;

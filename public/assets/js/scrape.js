@@ -14,7 +14,7 @@ var scrape = function (cb) {
 
                result.headline = $(element).find("h2").text().trim();
                
-               result.summary = 'https://www.nytimes.com' + $(element).find("a").attr("href");
+               result.summary = "https://www.nytimes.com" + $(element).find("a").attr("href");
 
                articles.push(result);
           });

@@ -75,10 +75,11 @@ $(document).ready(() => {
     function createPanel(article) {
          var panel = $(["<div class='panel panel-default>",
                         "<div class='panel-heading'>",
-                        "<a href=" +article.summary+" target='_blank'>",          
+                        "<a href=" +article.summary+" target='_blank' class='article-name'>",          
                         "<h3>",
                         article.headline,
                         "</a>",
+                        "<br>",
                         "<a class='btn btn-success save'>",
                         "Save Article",
                         "</a>",
