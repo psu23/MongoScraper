@@ -20,6 +20,7 @@ $(document).ready(() => {
          });
     };
 
+    //similar to index.js, articles will be rendered here if they were saved
     function renderArticles(articles) {
          console.log(articles);
          var articlePanels = [];
@@ -31,16 +32,17 @@ $(document).ready(() => {
          articleContainer.append(articlePanels);
     };
 
+    //if no saved articles, list options for user of what they can do
     function emptyAlert() {
          var alert = $(["<div class='alert alert-warning text-center'>",
-                        "<h4>Hmm... apparently there no new articles.</h4>",
+                        "<h4>No new articles.</h4>",
                         "</div>",
                         "<div class='panel panel-default'>",
                         "<div class='panel-heading text-center'>",
-                        "<h3>Would you like to browse available articles?</h3>",
+                        "<h3>Options: </h3>",
                         "</div>",
                         "<div class='panel-body text-center'>",
-                        "<h4><a class='scrape-new'>Try Scraping Again</a></h4>",
+                        "<h4><a class='scrape-new'>Refresh Feed</a></h4>",
                         "<h4><a href='/'>Browse Articles</a></h4>",
                         "</div>",
                         "</div>"
@@ -48,6 +50,7 @@ $(document).ready(() => {
                         articleContainer.append(alert);
     };
 
+    //each saved article will be posted with the following components
     function createPanel(article) {
          var panel = $(["<div class='panel panel-default>",
                         "<div class='panel-heading'>",
@@ -72,6 +75,7 @@ $(document).ready(() => {
          return panel;
     };
 
+    //if an article is deleted
     function handleArticleDelete() {
          
          var articleToDelete = $(this).parents(".panel").data();
@@ -87,7 +91,7 @@ $(document).ready(() => {
          });
     };
 
-
+    //when a note is being made for an article
     function handleArticleNotes() {
          var currentArticle = $(this).parents(".panel").data();
          $.get("/api/notes/" + currentArticle._id).then((data) => {
@@ -116,15 +120,9 @@ $(document).ready(() => {
          });
     };
 
+
+    //list all notes for an article
     function renderNotesList(data) {
-         console.log();
-         console.log(data);
-         console.log("Hello");
-         console.log(data.notes[0].noteText);
-         console.log();
-         console.log();
-         console.log();
-         console.log();
          var notesToRender = [];
          var currentNote;
 
@@ -144,6 +142,7 @@ $(document).ready(() => {
          $(".note-container").append(notesToRender);
     };
 
+    //when note is saved
     function handleNoteSave() {
          var noteData;
          var newNote = $(".bootbox-body textarea").val().trim();
@@ -163,6 +162,7 @@ $(document).ready(() => {
          };
     };
 
+    //if a note is deleted
     function handleNoteDelete() {
          var noteToDelete = $(this).data("_id");
          $.ajax({

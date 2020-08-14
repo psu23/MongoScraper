@@ -1,3 +1,4 @@
+//dependecies
 var express = require("express");
 var mongoose = require("mongoose");
 var exphbs = require("express-handlebars");
@@ -19,6 +20,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static("public"));
 
+//use handlebars for app layout
 app.engine("handlebars", exphbs({
      defaultLayout: "main"
 }));
@@ -26,6 +28,7 @@ app.set("view engine", "handlebars");
 
 app.use(router);
 
+//connect to server
 app.listen(PORT, function() {
      console.log("App running on port " + PORT);
 });

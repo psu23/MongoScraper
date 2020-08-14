@@ -2,6 +2,8 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
+//save all necessary information about article in mongo schema
+//headline, url, date, whether it is saved or not (false by default)
 var headLineSchema = new Schema({
      headline: {
           type: String,

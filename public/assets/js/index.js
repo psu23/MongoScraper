@@ -1,11 +1,13 @@
 $(document).ready(() => {
 
+     //upon loading of site, create a container for all articles
     var articleContainer = $(".article-container");
     $(document).on("click", ".btn.save", handleArticleSave);
     $(document).on("click", ".scrape-new", handleArticleScrape);
 
     initialize();
 
+    //get any unsaved articles
     function initialize() {
          articleContainer.empty();
          $.get("/api/headline?saved=false").then((data) => {
@@ -17,7 +19,7 @@ $(document).ready(() => {
          });
     };
 
-
+    //when articles are saved, patch them
     function handleArticleSave() {
          var articleToSave = $(this).parents(".panel").data();
          articleToSave.saved = true;
@@ -36,6 +38,7 @@ $(document).ready(() => {
          })
     };
 
+    //when articles are scraped, alert user and obtain contents from api/fetch about how many new articles were scraped
     function handleArticleScrape() {
          $.get("/api/fetch").then((data) => {
               initialize();
@@ -43,6 +46,7 @@ $(document).ready(() => {
          });
     };
 
+    //render articles for user to see on page
     function renderArticles(articles) {
          var articlePanels = [];
 
@@ -53,25 +57,25 @@ $(document).ready(() => {
          articleContainer.append(articlePanels);
     };
 
-
-
+    //if no new articles are available to be scraped, alert user
     function emptyArticles() {
          var alert = $(["<div class='alert alert-warning text-center'>",
-                        "<h4>Hmm... apparently there no new articles.</h4>",
+                        "<h4>No new articles</h4>",
                         "</div>",
                         "<div class='panel panel-default'>",
                         "<div class='panel-heading text-center'>",
-                        "<h3>What do you want to do?</h3>",
+                        "<h3>Options: </h3>",
                         "</div>",
                         "<div class='panel-body text-center'>",
-                        "<h4><a class='scrape-new'>Try Scraping Again</a></h4>",
-                        "<h4><a href='/saved'>Go to Saved Articles</a></h4>",
+                        "<h4><a class='scrape-new'>Refresh Feed</a></h4>",
+                        "<h4><a href='/saved'>Saved Articles</a></h4>",
                         "</div>",
                         "</div>"
                         ].join(""));
                         articleContainer.append(alert);
     };
 
+    //each article will be listed as the title (which is a link to the article) and a save button associated with it
     function createPanel(article) {
          var panel = $(["<div class='panel panel-default>",
                         "<div class='panel-heading'>",

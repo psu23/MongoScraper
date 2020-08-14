@@ -1,3 +1,4 @@
+//format of date associated with an article's posting
 var makeDate = function() {
     var d = new Date();
     var formattedDate = "";

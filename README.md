@@ -2,6 +2,14 @@
 
 MongoScraper is an application that allows users to scrape a news site (The New York Times) for articles (using the cheerio and mongoose npm packages), save articles and keep track of notes on each article that is saved.
 
+### Deployed Site
+
+https://stark-wave-29497.herokuapp.com/
+
+### App Demo
+
+![gif demo of Mongo Scraper](./public/images/example.gif)
+
 The following content is the instructions given for the assignment.
 
 ### Overview
