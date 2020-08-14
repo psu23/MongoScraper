@@ -8,7 +8,7 @@ https://stark-wave-29497.herokuapp.com/
 
 ### App Demo
 
-![gif demo of Mongo Scraper](./public/images/example.gif)
+![gif demo of Mongo Scraper](./public/assets/images/example.gif)
 
 The following content is the instructions given for the assignment.
 
