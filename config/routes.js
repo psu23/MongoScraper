@@ -1,4 +1,4 @@
-var scrape = require("./../scripts/scrape");
+var scrape = require("../public/assets/js/scrape");
 var headlinesController = require("./../controllers/headline");
 var notesController = require("./../controllers/notes");
 

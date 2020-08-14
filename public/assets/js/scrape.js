@@ -2,19 +2,19 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 
 var scrape = function (cb) {
-     axios("http://www.echojs.com/").then(function(response) {
+     axios("http://www.nytimes.com/").then(function(response) {
           
           var $ = cheerio.load(response.data);
 
           var articles = [];
           
-          $("article h2").each(function(i,element) {
+          $("article").each(function(i,element) {
 
                var result = {};
 
-               result.headline = $(this).children("a").text();
+               result.headline = $(element).find("h2").text().trim();
                
-               result.summary = $(this).children("a").attr("href");
+               result.summary = 'https://www.nytimes.com' + $(element).find("a").attr("href");
 
                articles.push(result);
           });
